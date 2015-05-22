@@ -198,9 +198,9 @@ module Bluedart
         response_hash[:error_text] = response[:error_message]
       else
         content = required_content(message, response)
-        if content[:is_error]
+        if content[:is_error] || content[:error]
           response_hash[:error] = true
-          response_hash[:error_text] = content[:error_message] || content[:status]
+          response_hash[:error_text] = content[:error_message] || content[:status] || content[:error_text]
         else
           response_hash[:content] = content
         end
@@ -216,9 +216,13 @@ module Bluedart
     #
     # Returns Hash
     def required_content(prefix, content)
-      prefix_s = prefix.snakecase
-      keys = (prefix_s + '_response').to_sym, (prefix_s + '_result').to_sym
-      content[keys[0]][keys[1]]
+      if content[:fault].nil?
+        prefix_s = prefix.snakecase
+        keys = (prefix_s + '_response').to_sym, (prefix_s + '_result').to_sym
+        return content[keys[0]][keys[1]]
+      else
+        return {error: true, error_text: content[:fault]}
+      end
     end
 
     # input params
