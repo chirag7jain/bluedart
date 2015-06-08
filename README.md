@@ -46,6 +46,19 @@ b = Bluedart::Shipment.new(shipment_details)
 b.response
 ```
 
+### Tracking API
+
+```ruby
+
+tracking_details = {creds: {license_key: '', login_id: ''}, scans: 0}
+
+tracking_details[:numbers] = ['123456798']
+
+t = Bluedart::Tracking.new(tracking_details)
+t.request
+
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
