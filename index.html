@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Bluedart by chirag7jain</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Bluedart</h1>
+      <h2 class="project-tagline">Provides an interface to Bluedart Web Services</h2>
+      <a href="https://github.com/chirag7jain/bluedart" class="btn">View on GitHub</a>
+      <a href="https://github.com/chirag7jain/bluedart/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/chirag7jain/bluedart/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="bluedart-gem" class="anchor" href="#bluedart-gem" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bluedart Gem</h1>
+
+<p>The Gem provides an interface to Bluedart APIs. Currently under development. FYI This gem is neither built nor promoted by Bluedart. To experiment with the code, run <code>bin/console</code> for an interactive prompt.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Add this line to your application's Gemfile:</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-k">gem</span> <span class="pl-s"><span class="pl-pds">'</span>bluedart<span class="pl-pds">'</span></span></pre></div>
+
+<p>And then execute:</p>
+
+<pre><code>$ bundle
+</code></pre>
+
+<p>Or install it yourself as:</p>
+
+<pre><code>$ gem install bluedart
+</code></pre>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="pincode-api" class="anchor" href="#pincode-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pincode API</h3>
+
+<div class="highlight highlight-source-ruby"><pre>pincode_details <span class="pl-k">=</span> {<span class="pl-c1">pincode:</span> <span class="pl-c1">411028</span>, <span class="pl-c1">mode:</span> <span class="pl-s"><span class="pl-pds">'</span>development<span class="pl-pds">'</span></span>, <span class="pl-c1">creds:</span> {<span class="pl-c1">license_key:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>, <span class="pl-c1">login_id:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>}}
+
+p <span class="pl-k">=</span> <span class="pl-c1">Bluedart</span>::<span class="pl-c1">PincodeService</span>.<span class="pl-k">new</span>(pincode_details)
+p.response</pre></div>
+
+<h3>
+<a id="shipment-api" class="anchor" href="#shipment-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>Shipment API</h3>
+
+<div class="highlight highlight-source-ruby"><pre>shipment_details <span class="pl-k">=</span> {<span class="pl-c1">mode:</span> <span class="pl-s"><span class="pl-pds">'</span>prod<span class="pl-pds">'</span></span>}
+
+shipment_details[<span class="pl-c1">:creds</span>] <span class="pl-k">=</span> {<span class="pl-c1">license_key:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>, <span class="pl-c1">login_id:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>}}
+
+shipment_details[<span class="pl-c1">:shipper_details</span>] <span class="pl-k">=</span> {<span class="pl-c1">customer_code:</span><span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>, <span class="pl-c1">:customer_name</span><span class="pl-c1">:"J Bieber"</span>, <span class="pl-c1">:address</span><span class="pl-c1">:"ABC ABC"</span>, <span class="pl-c1">customer_pincode:</span><span class="pl-s"><span class="pl-pds">"</span>499999<span class="pl-pds">"</span></span>,<span class="pl-c1">customer_telephone:</span><span class="pl-c1">nil</span>, <span class="pl-c1">customer_mobile:</span><span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>, <span class="pl-c1">customer_email_id:</span><span class="pl-s"><span class="pl-pds">"</span>someone@me.com<span class="pl-pds">"</span></span>, <span class="pl-c1">sender:</span><span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>, <span class="pl-c1">vendor_code:</span><span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>, <span class="pl-c1">isToPayCustomer:</span><span class="pl-c1">false</span>, <span class="pl-c1">origin_area:</span><span class="pl-s"><span class="pl-pds">'</span>AAA<span class="pl-pds">'</span></span>}
+
+shipment_details[<span class="pl-c1">:consignee_details</span>] <span class="pl-k">=</span> {<span class="pl-c1">consignee_name:</span><span class="pl-s"><span class="pl-pds">"</span>Ninja<span class="pl-pds">"</span></span>, <span class="pl-c1">address:</span><span class="pl-s"><span class="pl-pds">"</span>hogsmeade station<span class="pl-pds">"</span></span>, <span class="pl-c1">consignee_pincode:</span><span class="pl-s"><span class="pl-pds">"</span>999999<span class="pl-pds">"</span></span>, <span class="pl-c1">consignee_telephone:</span><span class="pl-s"><span class="pl-pds">"</span>000000000<span class="pl-pds">"</span></span>, <span class="pl-c1">:consignee_mobile</span><span class="pl-c1">:"0000000000"</span>, <span class="pl-c1">consignee_attention:</span><span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>}
+
+shipment_details[<span class="pl-c1">:services</span>] <span class="pl-k">=</span> {<span class="pl-c1">piece_count:</span><span class="pl-c1">1</span>, <span class="pl-c1">actual_weight:</span><span class="pl-c1">0.1</span>, <span class="pl-c1">pack_type:</span><span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>, <span class="pl-c1">invoice_no:</span><span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>, <span class="pl-c1">special_instruction:</span><span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>, <span class="pl-c1">declared_value:</span><span class="pl-c1">9999</span>, <span class="pl-c1">credit_reference_no:</span><span class="pl-s"><span class="pl-pds">"</span>9999<span class="pl-pds">"</span></span>, <span class="pl-c1">dimensions:</span><span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>, <span class="pl-c1">pickup_date:</span><span class="pl-s"><span class="pl-pds">'</span>2015-12-12<span class="pl-pds">'</span></span>, <span class="pl-c1">pickup_time:</span><span class="pl-s"><span class="pl-pds">"</span>1313<span class="pl-pds">"</span></span>, <span class="pl-c1">commodities:</span>[<span class="pl-s"><span class="pl-pds">'</span>Crack<span class="pl-pds">'</span></span>], <span class="pl-c1">product_type:</span><span class="pl-s"><span class="pl-pds">"</span>Dutiables<span class="pl-pds">"</span></span>, <span class="pl-c1">collectable_amount:</span><span class="pl-c1">5050</span>, <span class="pl-c1">product_code:</span><span class="pl-s"><span class="pl-pds">"</span>A<span class="pl-pds">"</span></span>, <span class="pl-c1">sub_product_code:</span><span class="pl-s"><span class="pl-pds">"</span>C<span class="pl-pds">"</span></span>, <span class="pl-c1">p_d_f_output_not_required:</span><span class="pl-c1">false</span>}
+
+b <span class="pl-k">=</span> <span class="pl-c1">Bluedart</span>::<span class="pl-c1">Shipment</span>.<span class="pl-k">new</span>(shipment_details)
+b.response</pre></div>
+
+<h3>
+<a id="tracking-api" class="anchor" href="#tracking-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tracking API</h3>
+
+<div class="highlight highlight-source-ruby"><pre>
+tracking_details <span class="pl-k">=</span> {<span class="pl-c1">creds:</span> {<span class="pl-c1">license_key:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>, <span class="pl-c1">login_id:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>}, <span class="pl-c1">scans:</span> <span class="pl-c1">0</span>}
+
+tracking_details[<span class="pl-c1">:numbers</span>] <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">'</span>123456798<span class="pl-pds">'</span></span>]
+
+t <span class="pl-k">=</span> <span class="pl-c1">Bluedart</span>::<span class="pl-c1">Tracking</span>.<span class="pl-k">new</span>(tracking_details)
+t.request
+</pre></div>
+
+<h2>
+<a id="development" class="anchor" href="#development" aria-hidden="true"><span class="octicon octicon-link"></span></a>Development</h2>
+
+<p>After checking out the repo, run <code>bin/setup</code> to install dependencies. Then, run <code>bin/console</code> for an interactive prompt that will allow you to experiment.</p>
+
+<p>To install this gem onto your local machine, run <code>bundle exec rake install</code>. To release a new version, update the version number in <code>version.rb</code>, and then run <code>bundle exec rake release</code> to create a git tag for the version, push git commits and tags, and push the <code>.gem</code> file to <a href="https://rubygems.org">rubygems.org</a>.</p>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<ol>
+<li>Fork it ( <a href="https://github.com/chirag7jain/bluedart/fork">https://github.com/chirag7jain/bluedart/fork</a> )</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create a new Pull Request</li>
+</ol>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/chirag7jain/bluedart">Bluedart</a> is maintained by <a href="https://github.com/chirag7jain">chirag7jain</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
