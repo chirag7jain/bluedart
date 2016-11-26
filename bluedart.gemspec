@@ -12,6 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Bluedart Web Services}
   spec.description   = %q{Provides an interface to Bluedart Web Services}
   spec.homepage      = "https://github.com/chirag7jain/bluedart"
+  spec.licenses      = ["MIT"]
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
@@ -25,4 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.9"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "debugger", ">= 1.6.8"
+  
+  spec.required_ruby_version = ">= 1.9.3"
 end
