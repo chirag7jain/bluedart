@@ -25,9 +25,9 @@ module Bluedart
 
     def cancel_pickup_request_hash(details)
       params = {}
-      params['ns5:PickupRegistrationDate'] = details[:pickup_registration_date]
-      params['ns5:Remarks'] = details[:remarks]
-      params['ns5:TokenNumber'] = details[:token_number]
+      params["ns5:PickupRegistrationDate"] = details[:pickup_registration_date]
+      params["ns5:Remarks"] = details[:remarks]
+      params["ns5:TokenNumber"] = details[:token_number]
       params
     end
   end
