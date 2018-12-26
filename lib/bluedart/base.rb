@@ -34,6 +34,7 @@ module Bluedart
       ns[:profile]  = {key:'ns2', value: 'http://schemas.datacontract.org/2004/07/SAPI.Entities.Admin'}
       ns[:wsa]      = {key:'ns3', value: 'http://www.w3.org/2005/08/addressing'}
       ns[:shipment] = {key:'ns4', value: 'http://schemas.datacontract.org/2004/07/SAPI.Entities.WayBillGeneration'}
+      ns[:pickup]   = {key:'ns5', value: 'http://schemas.datacontract.org/2004/07/SAPI.Entities.Pickup'}
       ns
     end
 
