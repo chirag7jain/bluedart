@@ -12,7 +12,7 @@ module Bluedart
       if @mode == 'prod'
         'https://netconnect.bluedart.com/ShippingAPI/WayBill/WayBillGeneration.svc'
       else
-        'https://netconnect.bluedart.com/Demo/ShippingAPI/WayBill/WayBillGeneration.svc'
+        'http://netconnect.bluedart.com/Demo/ShippingAPI/WayBill/WayBillGeneration.svc'
       end
     end
 
@@ -73,11 +73,11 @@ module Bluedart
       params['PickupTime'] = details[:pickup_time]
       params['PieceCount'] = details[:piece_count]
       params['ProductCode'] = details[:product_code]
+      params['RegisterPickup'] = details[:register_pickup]
       params['ProductType'] = details[:product_type]
       params['SubProductCode'] = details[:sub_product_code]
       params['SpecialInstruction'] = details[:special_instruction]
       params['PDFOutputNotRequired'] = details[:p_d_f_output_not_required]
-      params['RegisterPickup'] = details[:register_pickup]
       params
     end
 
