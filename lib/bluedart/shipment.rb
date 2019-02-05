@@ -66,7 +66,7 @@ module Bluedart
       params['Commodity'] = commodites_hash(details[:commodities])
       params['CreditReferenceNo'] = details[:credit_reference_no]
       params['DeclaredValue'] = details[:declared_value]
-      params['Dimensions'] = details[:diemensions]
+      params['Dimensions'] = dimensions_hash(details[:dimensions])
       params['InvoiceNo'] = details[:invoice_no]
       params['PackType'] = details[:pack_type]
       params['PickupDate'] = details[:pickup_date]
