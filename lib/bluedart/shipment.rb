@@ -29,18 +29,18 @@ module Bluedart
     def shipper_hash(details)
       params = {}
       address_array = multi_line_address(details[:address], 30)
-      params['CustomerAddress1'] = self.client.address_line_1
-      params['CustomerAddress2'] = self.client.address_line_2
+      params['CustomerAddress1'] = address_array[0]
+      params['CustomerAddress2'] = address_array[1]
       params['CustomerAddress3'] = address_array[2]
       params['CustomerCode'] = details[:customer_code]
-      params['CustomerEmailID'] = self.client.email
-      params['CustomerMobile'] = self.client.phone_primary
-      params['CustomerName'] = self.client.name
-      params['CustomerPincode'] = self.client.pincode
-      params['CustomerTelephone'] = self.client.phone_secondary
+      params['CustomerEmailID'] = details[:customer_email_id]
+      params['CustomerMobile'] = details[:customer_mobile]
+      params['CustomerName'] = details[:customer_name]
+      params['CustomerPincode'] = details[:customer_pincode]
+      params['CustomerTelephone'] = details[:customer_telephone]
       params['isToPayCustomer'] = details[:isToPayCustomer]
-      params['OriginArea'] = 'MAA'
-      params['Sender'] = 'Gehna'
+      params['OriginArea'] = details[:origin_area]
+      params['Sender'] = details[:sender]
       params['VendorCode'] = details[:vendor_code]
       params
     end
