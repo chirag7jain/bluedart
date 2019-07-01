@@ -10,9 +10,9 @@ module Bluedart
 
     def request_url
       if @mode == 'prod'
-        'https://netconnect.bluedart.com/ShippingAPI/WayBill/WayBillGeneration.svc'
+        'https://netconnect.bluedart.com/Ver1.7/ShippingAPI/WayBill/WayBillGeneration.svc'
       else
-        'http://netconnect.bluedart.com/Demo/ShippingAPI/WayBill/WayBillGeneration.svc'
+        'http://netconnect.bluedart.com/Ver1.7/Demo/ShippingAPI/WayBill/WayBillGeneration.svc'
       end
     end
 
@@ -29,18 +29,18 @@ module Bluedart
     def shipper_hash(details)
       params = {}
       address_array = multi_line_address(details[:address], 30)
-      params['CustomerAddress1'] = address_array[0]
-      params['CustomerAddress2'] = address_array[1]
+      params['CustomerAddress1'] = self.client.address_line_1
+      params['CustomerAddress2'] = self.client.address_line_2
       params['CustomerAddress3'] = address_array[2]
       params['CustomerCode'] = details[:customer_code]
-      params['CustomerEmailID'] = details[:customer_email_id]
-      params['CustomerMobile'] = details[:customer_mobile]
-      params['CustomerName'] = details[:customer_name]
-      params['CustomerPincode'] = details[:customer_pincode]
-      params['CustomerTelephone'] = details[:customer_telephone]
+      params['CustomerEmailID'] = self.client.email
+      params['CustomerMobile'] = self.client.phone_primary
+      params['CustomerName'] = self.client.name
+      params['CustomerPincode'] = self.client.pincode
+      params['CustomerTelephone'] = self.client.phone_secondary
       params['isToPayCustomer'] = details[:isToPayCustomer]
-      params['OriginArea'] = details[:origin_area]
-      params['Sender'] = details[:sender]
+      params['OriginArea'] = 'MAA'
+      params['Sender'] = 'Gehna'
       params['VendorCode'] = details[:vendor_code]
       params
     end
@@ -61,23 +61,31 @@ module Bluedart
 
     def services_hash(details)
       params = {}
+      params['AWBNo'] = details[:awb_no]
       params['ActualWeight'] = details[:actual_weight]
-      params['CollectableAmount'] = details[:collactable_amount]
+      params['CollectableAmount'] = details[:collectable_amount]
       params['Commodity'] = commodites_hash(details[:commodities])
       params['CreditReferenceNo'] = details[:credit_reference_no]
+      params['CustomerEDD'] = details[:customer_edd]
       params['DeclaredValue'] = details[:declared_value]
+      params['DeliveryTimeSlot'] = details[:delivery_time_slot]
       params['Dimensions'] = details[:diemensions]
       params['InvoiceNo'] = details[:invoice_no]
+      params['IsDedicatedDeliveryNetwork'] = details[:is_dedicated_delivery_network]
+      params['IsForcePickup'] = details[:is_force_pickup]
+      params['IsReversePickup'] = details[:is_reverse_pickup]
+      params['PDFOutputNotRequired'] = details[:p_d_f_output_not_required]
       params['PackType'] = details[:pack_type]
+      params['ParcelShopCode'] = details[:parcel_shop_code]
       params['PickupDate'] = details[:pickup_date]
       params['PickupTime'] = details[:pickup_time]
       params['PieceCount'] = details[:piece_count]
       params['ProductCode'] = details[:product_code]
-      params['RegisterPickup'] = details[:register_pickup]
       params['ProductType'] = details[:product_type]
-      params['SubProductCode'] = details[:sub_product_code]
+      params['RegisterPickup'] = details[:register_pickup]
       params['SpecialInstruction'] = details[:special_instruction]
-      params['PDFOutputNotRequired'] = details[:p_d_f_output_not_required]
+      params['SubProductCode'] = details[:sub_product_code]
+
       params
     end
 
