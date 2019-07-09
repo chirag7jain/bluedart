@@ -38,7 +38,7 @@ module Bluedart
       params['CustomerName'] = details[:customer_name]
       params['CustomerPincode'] = details[:customer_pincode]
       params['CustomerTelephone'] = details[:customer_telephone]
-      params['isToPayCustomer'] = details[:isToPayCustomer]
+      params['IsToPayCustomer'] = details[:isToPayCustomer]
       params['OriginArea'] = details[:origin_area]
       params['Sender'] = details[:sender]
       params['VendorCode'] = details[:vendor_code]
