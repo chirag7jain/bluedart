@@ -13,7 +13,7 @@ module Bluedart
     end
 
     def self.request_url
-      'http://www.bluedart.com/servlet/RoutingServlet'
+      'https://api.bluedart.com/servlet/RoutingServlet'
     end
 
     def request
@@ -24,8 +24,9 @@ module Bluedart
     def make_request
       params = {handler: 'tnt', action: 'custawbquery', loginid: @loginid,
         awb: 'awb', numbers: @numbers, lickey: @license_key,
-        verno: 1, scan: @scans
+        verno: 1.3, scan: @scans
       }
+      # https://api.bluedart.com/servlet/RoutingServlet?handler=tnt&action=custawbquery&loginid=MAA03006&format=xml&lickey=a065857670c55945e8191e295fbdc980&verno=1.3&scan=1&awb=awb&numbers=59654933461
       request = HTTParty.get(Tracking.request_url, query: params, verify: false)
       response_return(request.body)
     end
