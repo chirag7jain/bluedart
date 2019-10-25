@@ -9,10 +9,10 @@ module Bluedart
     end
 
     def request_url
-      if @mode == 'prod'
-        'https://netconnect.bluedart.com/ShippingAPI/WayBill/WayBillGeneration.svc'
+      if @mode == :prod
+        'https://netconnect.bluedart.com/Ver1.7/ShippingAPI/WayBill/WayBillGeneration.svc'
       else
-        'http://netconnect.bluedart.com/Demo/ShippingAPI/WayBill/WayBillGeneration.svc'
+        'http://netconnect.bluedart.com/Ver1.7/Demo/ShippingAPI/WayBill/WayBillGeneration.svc'
       end
     end
 
@@ -61,23 +61,31 @@ module Bluedart
 
     def services_hash(details)
       params = {}
+      params['AWBNo'] = details[:awb_no]
       params['ActualWeight'] = details[:actual_weight]
-      params['CollectableAmount'] = details[:collactable_amount]
+      params['CollectableAmount'] = details[:collectable_amount]
       params['Commodity'] = commodites_hash(details[:commodities])
       params['CreditReferenceNo'] = details[:credit_reference_no]
+      params['CustomerEDD'] = details[:customer_edd]
       params['DeclaredValue'] = details[:declared_value]
+      params['DeliveryTimeSlot'] = details[:delivery_time_slot]
       params['Dimensions'] = details[:diemensions]
       params['InvoiceNo'] = details[:invoice_no]
+      params['IsDedicatedDeliveryNetwork'] = details[:is_dedicated_delivery_network]
+      params['IsForcePickup'] = details[:is_force_pickup]
+      params['IsReversePickup'] = details[:is_reverse_pickup]
+      params['PDFOutputNotRequired'] = details[:p_d_f_output_not_required]
       params['PackType'] = details[:pack_type]
+      params['ParcelShopCode'] = details[:parcel_shop_code]
       params['PickupDate'] = details[:pickup_date]
       params['PickupTime'] = details[:pickup_time]
       params['PieceCount'] = details[:piece_count]
       params['ProductCode'] = details[:product_code]
-      params['RegisterPickup'] = details[:register_pickup]
       params['ProductType'] = details[:product_type]
-      params['SubProductCode'] = details[:sub_product_code]
+      params['RegisterPickup'] = details[:register_pickup]
       params['SpecialInstruction'] = details[:special_instruction]
-      params['PDFOutputNotRequired'] = details[:p_d_f_output_not_required]
+      params['SubProductCode'] = details[:sub_product_code]
+
       params
     end
 
