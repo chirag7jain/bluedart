@@ -123,12 +123,11 @@ module Bluedart
           value.each {|inner_key, inner_values| xml = xml_key_value(inner_key, inner_values, xml)}
         end
       elsif value.is_a?(Array)
-        new_key = singular(key)
-        value.each do |single_value|
-          xml.send(key) do |xml|
+        xml.send(key) do |xml|
+          value.each do |single_value|
             xml = hash_xml(xml, single_value)
           end
-        end
+        end  
       else
         xml.send(key, value)
       end
@@ -235,6 +234,7 @@ module Bluedart
     # Returns Hash
     def request(url, body)
       res = HTTParty.post(url, body: body, headers: {'Content-Type' => 'application/soap+xml; charset="utf-8"'}, :verify => false)
+      p "response is: #{res}. response body is: #{res.body} for url: #{url}"
       content = xml_hash(res.body)[:envelope][:body]
     end
 

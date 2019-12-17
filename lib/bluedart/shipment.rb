@@ -10,9 +10,9 @@ module Bluedart
 
     def request_url
       if @mode == 'prod'
-        'https://netconnect.bluedart.com/ShippingAPI/WayBill/WayBillGeneration.svc'
+        'https://netconnect.bluedart.com/Ver1.8/ShippingAPI/WayBill/WayBillGeneration.svc'
       else
-        'http://netconnect.bluedart.com/Demo/ShippingAPI/WayBill/WayBillGeneration.svc'
+        'http://netconnect.bluedart.com/Ver1.8/Demo/ShippingAPI/WayBill/WayBillGeneration.svc'
       end
     end
 
@@ -38,7 +38,7 @@ module Bluedart
       params['CustomerName'] = details[:customer_name]
       params['CustomerPincode'] = details[:customer_pincode]
       params['CustomerTelephone'] = details[:customer_telephone]
-      params['isToPayCustomer'] = details[:isToPayCustomer]
+      params['IsToPayCustomer'] = details[:isToPayCustomer]
       params['OriginArea'] = details[:origin_area]
       params['Sender'] = details[:sender]
       params['VendorCode'] = details[:vendor_code]
@@ -66,7 +66,7 @@ module Bluedart
       params['Commodity'] = commodites_hash(details[:commodities])
       params['CreditReferenceNo'] = details[:credit_reference_no]
       params['DeclaredValue'] = details[:declared_value]
-      params['Dimensions'] = details[:diemensions]
+      params['Dimensions'] = dimensions_hash(details[:dimensions])
       params['InvoiceNo'] = details[:invoice_no]
       params['PackType'] = details[:pack_type]
       params['PickupDate'] = details[:pickup_date]
