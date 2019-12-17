@@ -1,3 +1,7 @@
+# NEED NEW MAINTAINERS 
+
+PLEASE POST ON THE ISSUE SECTION IF YOU ARE INTERESTED IN MAINTAINING THE GEM
+
 # Bluedart Gem
 
 The Gem provides an interface to Bluedart APIs. Currently under development. FYI This gem is neither built nor promoted by Bluedart. To experiment with the code, run `bin/console` for an interactive prompt.
