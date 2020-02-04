@@ -78,6 +78,7 @@ module Bluedart
       params['SubProductCode'] = details[:sub_product_code]
       params['SpecialInstruction'] = details[:special_instruction]
       params['PDFOutputNotRequired'] = details[:p_d_f_output_not_required]
+      params['PrinterLableSize'] = details[:printer_label_size]
       params
     end
 
