@@ -8,9 +8,9 @@ module Bluedart
 
     def request_url
       if @mode == 'prod'
-        'http://netconnect.bluedart.com/Ver1.8/ShippingAPI/Finder/ServiceFinderQuery.svc'
+        'https://netconnect.bluedart.com/Ver1.10/ShippingAPI/Finder/ServiceFinderQuery.svc'
       else
-        'http://netconnect.bluedart.com/Ver1.8/Demo/ShippingAPI/Finder/ServiceFinderQuery.svc'
+        'https://netconnect.bluedart.com/Ver1.10/Demo/ShippingAPI/Finder/ServiceFinderQuery.svc'
       end
     end
 
