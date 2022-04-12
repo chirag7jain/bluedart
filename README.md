@@ -63,6 +63,15 @@ t.request
 
 ```
 
+### Cancel AWB API
+
+```ruby
+awb_details = {awbno: "123", mode: 'development', creds: {license_key: '', login_id: ''}}
+
+p = Bluedart::CancelAwb.new(pincode_details)
+p.response
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
